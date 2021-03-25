@@ -1,0 +1,29 @@
+
+import java.util.Scanner;
+
+public class mains extends UserMainCode {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("enter string1");
+		String str1 = scan.nextLine();
+		System.out.println("enter delimiter");
+		String delimiter = scan.nextLine();
+		extractMax(str1, delimiter);
+		scan.close();
+	}
+}
+class UserMainCode {
+	static String extractMax(String str1, String limiter) {
+		String[] words = str1.split(limiter);
+		String result = "";
+		for (int i = 0; i < words.length; i++) {
+			if (i != words.length - 1) {
+				if (words[i].length() > words[i + 1].length()) {
+					result = words[i];
+				}
+			}
+		}
+		System.out.println(result);
+		return result;
+	}
+}

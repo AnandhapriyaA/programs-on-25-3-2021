@@ -1,0 +1,32 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class mains extends UserMainCode {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("enter string");
+		String string=scan.nextLine();
+		storeMaxVowelWord(string);
+		scan.close();
+	}
+}
+class UserMainCode {
+		static String storeMaxVowelWord(String string) {
+		int max = 0;
+		String result = "";
+		for (String words : string.split(" ")) {
+			int count = 0;
+			for (char ch : words.toLowerCase().toCharArray()) {
+				if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+					count += 1;
+				}
+			}
+			if (count > max) {
+				max = count;
+				result = words;
+			}
+		}
+		System.out.println(result);
+		return result;
+	}
+}

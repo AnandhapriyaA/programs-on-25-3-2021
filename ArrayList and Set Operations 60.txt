@@ -1,0 +1,52 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class mains extends UserMainCode {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("enter character");
+		char ch = scan.nextLine().charAt(0);
+		System.out.println("enter length");
+		int len = scan.nextInt();
+		System.out.println("enter arraylist1");
+		ArrayList<Integer> list1 = new ArrayList<>();
+		ArrayList<Integer> list2 = new ArrayList<>();
+		for (int i = 0; i < len; i++)
+			list1.add(scan.nextInt());
+		for (int i = 0; i < len; i++)
+			list2.add(scan.nextInt());
+		performSetOperations(list1, list2, ch);
+		scan.close();
+	}
+}
+class UserMainCode {
+	static ArrayList<Integer> performSetOperations(ArrayList<Integer> list1, ArrayList<Integer> list2, char ch) {
+		ArrayList<Integer> list = new ArrayList<>();
+		int k = 0;
+		switch (ch) {
+		case '+':
+			list1.removeAll(list2);
+			list1.addAll(list2);
+			list = list1;
+			break;
+		case '*':
+			list1.retainAll(list2);
+			list = list1;
+			break;
+		case '-':
+			for (int i = 0; i < list1.size(); i++) {
+				k = 0;
+				for (int j = 0; j < list2.size(); j++) {
+					if (list1.get(i) == list2.get(j))
+						k = 1;
+				}
+				if (k == 0)
+					list.add(list1.get(i));
+			}
+			break;
+		}
+		for (int i = 0; i < list.size(); i++)
+			System.out.println(list.get(i));
+		return list;
+	}
+}

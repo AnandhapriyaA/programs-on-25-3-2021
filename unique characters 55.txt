@@ -1,0 +1,40 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class mains extends UserMainCode {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("enter string");
+		String string=scan.nextLine();
+		checkUnique(string);
+		scan.close();
+	}
+}
+class UserMainCode {
+		static int checkUnique(String string) {
+		StringBuffer sb = new StringBuffer(string);
+		int len = sb.length();
+		int count = 0;
+		for (int i = 0; i < len; i++) {
+			count = 0;
+			for (int j = i + 1; j < len; j++) {
+				if (sb.charAt(i) == sb.charAt(j)) {
+					sb.deleteCharAt(j);
+					count++;
+					j--;
+					len--;
+				}
+			}
+			if (count > 0) {
+				sb.deleteCharAt(i);
+				i--;
+				len--;
+			}
+		}
+		if (sb.length() == 0) {
+			System.out.println(-1);
+		} else
+			System.out.println(sb.length());
+		return count;
+	}
+}

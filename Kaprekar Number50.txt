@@ -1,0 +1,32 @@
+
+import java.util.Scanner;
+
+public class mains extends UserMainCode {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("enter number");
+		int number=scan.nextInt();
+		getKaprekarNumber(number);
+		scan.close();
+	}
+}
+class UserMainCode {
+		static int getKaprekarNumber(int number) {
+		int square=number*number;
+		String temp=Integer.toString(square);
+		if(square<=9)
+			temp="0"+temp;
+		int len=temp.length();int mid=len/2;
+		String left=temp.substring(0,mid);
+		String right=temp.substring(mid);
+		int leftno=Integer.parseInt(left);
+		int rightno=Integer.parseInt(right);
+		if(leftno+rightno==number) {
+			System.out.println("Kaprekar number");
+			return 1;
+		} else {
+			System.out.println("Not A Kaprekar number");
+			return -1;
+		}
+	}
+}

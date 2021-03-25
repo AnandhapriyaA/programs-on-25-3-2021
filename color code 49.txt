@@ -1,0 +1,27 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.Scanner;
+
+public class mains extends UserMainCode {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("enter code");
+		String code=scan.nextLine();
+		validateColorCode(code);
+		scan.close();
+	}
+}
+class UserMainCode {
+		static int validateColorCode(String code) {
+		Pattern pattern = Pattern.compile("[#][0-9A-F]{6}");
+		Matcher match = pattern.matcher(code);
+		boolean result = match.matches();
+		if (result == true) {
+			System.out.println("valid");
+			return 1;
+		} else {
+			System.out.println("invalid");
+			return -1;
+		}
+	}
+}
